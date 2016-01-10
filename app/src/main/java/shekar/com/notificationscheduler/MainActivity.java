@@ -16,8 +16,11 @@
 
 package shekar.com.notificationscheduler;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -56,7 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             // When the user clicks CANCEL ALARM, cancel the alarm. 
             case R.id.cancel_action:
-                alarm.cancelAlarm(this);
+                for (int i = 0; i <5 ; i++) {
+                    boolean alarmUp = (PendingIntent.getBroadcast(this, i,
+                            new Intent(this, SampleAlarmReceiver.class),
+                            PendingIntent.FLAG_NO_CREATE) != null);
+
+                    if (alarmUp)
+                    {
+                        Log.d("===myTag", "==Alarm is already active");
+                    }
+                }
+               // alarm.cancelAlarm(this);
                 return true;
         }
         return false;

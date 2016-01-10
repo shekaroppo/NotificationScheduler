@@ -3,6 +3,7 @@ package shekar.com.notificationscheduler;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 /**
  * This BroadcastReceiver automatically (re)starts the alarm when the device is
@@ -13,11 +14,13 @@ import android.content.Intent;
  */
 // BEGIN_INCLUDE(autostart)
 public class SampleBootReceiver extends BroadcastReceiver {
+
     SampleAlarmReceiver alarm = new SampleAlarmReceiver();
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED"))
         {
+            Log.d("===Boot","onReceive called");
             alarm.setAlarm(context);
         }
     }

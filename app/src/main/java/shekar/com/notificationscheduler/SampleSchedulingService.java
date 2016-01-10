@@ -42,6 +42,8 @@ public class SampleSchedulingService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        int mealType=intent.getIntExtra(SampleAlarmReceiver.MEAL_TYPE,-1);
+        Log.d("onHandleIntent====",mealType+"=");
         // BEGIN_INCLUDE(service_onhandle)
         // The URL from which to fetch content.
         String urlString = URL;

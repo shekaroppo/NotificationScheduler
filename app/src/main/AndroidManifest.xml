@@ -20,7 +20,11 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".SampleAlarmReceiver"></receiver>
+        <receiver android:name=".SampleAlarmReceiver">
+            <intent-filter>
+                <action android:name="reminder"/>
+            </intent-filter>
+        </receiver>
 
         <receiver android:name=".SampleBootReceiver"
                   android:enabled="false">
