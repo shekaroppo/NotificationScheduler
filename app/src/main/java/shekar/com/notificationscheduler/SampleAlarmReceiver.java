@@ -64,12 +64,12 @@ public class SampleAlarmReceiver extends WakefulBroadcastReceiver {
     public void setAlarm(Context context) {
 
         alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        for (int id = 0; id < 5; id++) {
+        for (int id = 0; id < 1; id++) {
             Intent intent = new Intent("reminder");
             intent.putExtra(MEAL_TYPE,id);
             alarmIntent = PendingIntent.getBroadcast(context, id, intent,0);
-            alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP,
-                    getTimeInMillis(id),AlarmManager.INTERVAL_DAY, alarmIntent);
+            alarmMgr.set(AlarmManager.RTC_WAKEUP,
+                    System.currentTimeMillis(), alarmIntent);
         }
 
         // Enable {@code SampleBootReceiver} to automatically restart the alarm when the
